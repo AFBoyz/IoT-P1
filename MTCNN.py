@@ -8,12 +8,12 @@ import pickle
 from keras_facenet import FaceNet
 
 facenet = FaceNet()
-faces_embeddings = np.load('faces_embeddings.npz')
+faces_embeddings = np.load('faces_detect_emb.npz')
 Y = faces_embeddings['arr_1']
 encoder = LabelEncoder()
 encoder.fit(Y)
 haarcascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-model = pickle.load(open('svm_model_160x160.pkl', 'rb'))
+model = pickle.load(open('svm_face_model.pkl', 'rb'))
 
 cap = cv2.VideoCapture(0)
 
