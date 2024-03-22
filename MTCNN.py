@@ -6,6 +6,8 @@ import tensorflow as tf
 from sklearn.preprocessing import LabelEncoder
 import pickle
 from keras_facenet import FaceNet
+import gpiozero
+from gpiozero import DistanceSensor
 
 facenet = FaceNet()
 faces_embeddings = np.load('faces_detect_emb.npz')
@@ -33,6 +35,8 @@ while cap.isOpened():
         cv2.putText(frame, str(final_name), (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3, cv2.LINE_AA)
     
     cv2.imshow('Face Recognition', frame)
+    # print("Frame:", frame)
+    # print("Frame:", faces)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
